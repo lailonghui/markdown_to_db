@@ -1,12 +1,12 @@
 package db
 
 import (
-	"db_doc_generator/config"
 	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"log"
+	"markdown_to_db/config"
 	"os"
 	"time"
 )

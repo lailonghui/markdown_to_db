@@ -2,11 +2,11 @@ package internal
 
 import (
 	"bytes"
-	"db_doc_generator/config"
-	"db_doc_generator/db"
 	"fmt"
 	"io/ioutil"
 	"log"
+	"markdown_to_db/config"
+	"markdown_to_db/db"
 )
 
 type ColumnInfo struct {

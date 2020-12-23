@@ -1,10 +1,10 @@
 package main
 
 import (
-	"db_doc_generator/config"
-	"db_doc_generator/db"
-	"db_doc_generator/internal"
 	"flag"
+	"markdown_to_db/config"
+	"markdown_to_db/db"
+	"markdown_to_db/internal"
 )
 
 var configFile string
@@ -14,7 +14,7 @@ func main() {
 
 	setup()
 
-	internal.Gen()
+	internal.Create()
 }
 
 func setup() {
@@ -24,6 +24,6 @@ func setup() {
 
 // 解析命令行参数
 func resolveCmdParam() {
-	flag.StringVar(&configFile, "f", "config/config.yaml", "配置文件")
+	flag.StringVar(&configFile, "f", "../config/config.yaml", "配置文件")
 	flag.Parse()
 }
