@@ -1,0 +1,22 @@
+db:
+  host: "127.0.0.1"
+  port: 5432
+  username: "postgres"
+  password: "123456"
+  dbname: "mytest"
+  sslMode: "disable"
+  timezone: "Asia/Shanghai"
+filePath: "table.md"
+#generate:
+#  modules:
+#    -
+#      name: "系统管理"
+#      tables:
+#        - "enterprise"
+#        - "system_user"
+#        - "department"
+#    -
+#      name: "位置管理"
+#      tables:
+#        - "vehicle_location_last"
+#        - "vehicle_location_his"
