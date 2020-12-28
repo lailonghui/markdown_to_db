@@ -81,7 +81,8 @@ func generatedTable(table *Table) error {
 	sql.WriteString(fmt.Sprintf("COMMENT ON TABLE public.%s IS '%s';\n",table.TableName,table.TableNote))
 	for _,t := range table.Body{
 		defaultString := ""
-		if t.Default != ""{
+		
+		if strings.TrimSpace(t.Default) != ""{
 			defaultString = fmt.Sprintf("(%s)",t.Default)
 		}
 		sql.WriteString(fmt.Sprintf("COMMENT ON COLUMN public.%s.%s IS '%s';\n",table.TableName,t.Name,strings.ReplaceAll(fmt.Sprintf("%s%s",t.Description,defaultString),"*","")))

@@ -1,9 +1,9 @@
 db:
-  host: "127.0.0.1"
+  host: "192.168.3.132"
   port: 5432
   username: "postgres"
-  password: "123456"
-  dbname: "mytest"
+  password: "root"
+  dbname: "vehicle"
   sslMode: "disable"
   timezone: "Asia/Shanghai"
 filePath: "table.md"
