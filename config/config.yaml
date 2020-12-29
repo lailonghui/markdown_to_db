@@ -6,7 +6,7 @@ db:
   dbname: "mytest"
   sslMode: "disable"
   timezone: "Asia/Shanghai"
-filePath: "../table2.md"
+filePath: "../table.md"
 #generate:
 #  modules:
 #    -

@@ -264,7 +264,7 @@ create table shard_1.users(
 | deleted_at                   | timestamptz | 删除时间                                                     | optional     |                            |
 | deleted_by                   | text        | 删除人                                                       | optional     | **system_user表**的user_id |
 
-### 1.5 muck_truck_worker_id_card_orders 渣土车工号牌制作订单表
+### 1.5 muck_truck_worker_identity_card_orders 渣土车工号牌制作订单表
 
 | Name                        | Type        | Description                                                  | **Required** | default                    |
 | --------------------------- | ----------- | ------------------------------------------------------------ | ------------ | -------------------------- |
@@ -430,23 +430,23 @@ create table shard_1.users(
 | deleted_at     | timestamptz | 删除时间                                        | optional     |                            |
 | deleted_by     | text        | 删除人                                          | optional     | **system_user表**的user_id |
 
-### 1.13 temp_id_card_download_log 临时工号牌下载记录表
+### 1.13 temp_identity_card_download_log 临时工号牌下载记录表
 
-| Name                     | Type        | Description                                     | **Required** | default                    |
-| ------------------------ | ----------- | ----------------------------------------------- | ------------ | -------------------------- |
-| id                       | bigint      | 按指定方法生成                                  | required     | 主键                       |
-| temp_id_card_download_id | text        | 外部编码，由golang程序生成的xid，暴露到外部使用 | required     | 联合主键                   |
-| vehicle_id               | text        | **vehicle_info** 车辆信息表 的vehicle_id        | required     |                            |
-| valid_from               | timestamptz | 有效期起始                                      | optional     |                            |
-| valid_until              | timestamptz | 有效期截止                                      | optional     |                            |
-| operator                 | text        | 操作人                                          | optional     | **system_user表**的user_id |
-| is_deleted               | boolean     | 是否删除                                        | optional     |                            |
-| created_at               | timestamptz | 创建时间                                        | required     |                            |
-| created_by               | text        | 创建人                                          | required     | **system_user表**的user_id |
-| updated_at               | timestamptz | 修改时间                                        | optional     |                            |
-| updated_by               | text        | 修改人                                          | optional     | **system_user表**的user_id |
-| deleted_at               | timestamptz | 删除时间                                        | optional     |                            |
-| deleted_by               | text        | 删除人                                          | optional     | **system_user表**的user_id |
+| Name                           | Type        | Description                                     | **Required** | default                    |
+| ------------------------------ | ----------- | ----------------------------------------------- | ------------ | -------------------------- |
+| id                             | bigint      | 按指定方法生成                                  | required     | 主键                       |
+| temp_identity_card_download_id | text        | 外部编码，由golang程序生成的xid，暴露到外部使用 | required     | 联合主键                   |
+| vehicle_id                     | text        | **vehicle_info** 车辆信息表 的vehicle_id        | required     |                            |
+| valid_from                     | timestamptz | 有效期起始                                      | optional     |                            |
+| valid_until                    | timestamptz | 有效期截止                                      | optional     |                            |
+| operator                       | text        | 操作人                                          | optional     | **system_user表**的user_id |
+| is_deleted                     | boolean     | 是否删除                                        | optional     |                            |
+| created_at                     | timestamptz | 创建时间                                        | required     |                            |
+| created_by                     | text        | 创建人                                          | required     | **system_user表**的user_id |
+| updated_at                     | timestamptz | 修改时间                                        | optional     |                            |
+| updated_by                     | text        | 修改人                                          | optional     | **system_user表**的user_id |
+| deleted_at                     | timestamptz | 删除时间                                        | optional     |                            |
+| deleted_by                     | text        | 删除人                                          | optional     | **system_user表**的user_id |
 
 ### 1.14 muck_truck_test_situation 新型渣土车测试情况表
 
@@ -880,29 +880,29 @@ create table shard_1.users(
 | deleted_at                        | timestamptz | 删除时间                                                   | optional     |                            |
 | deleted_by                        | text        | 删除人                                                     | optional     | **system_user表**的user_id |
 
-### 2.6 driver_id_info_report 驾驶员身份信息采集上报
+### 2.6 driver_identity_info_report 驾驶员身份信息采集上报
 
-| Name                     | Type        | Description                                     | **Required** | default                    |
-| ------------------------ | ----------- | ----------------------------------------------- | ------------ | -------------------------- |
-| id                       | bigint      | 按指定方法生成                                  | required     | 主键                       |
-| driver_id_info_report_id | text        | 外部编码，由golang程序生成的xid，暴露到外部使用 | required     | 联合主键                   |
-| vehicle_id               | text        | **vehicle_info** 车辆信息表 的vehicle_id        | required     |                            |
-| ic_card_status           | integer     | IC状态(从业资格证IC卡插入,从业资格证IC卡拔出)   | optional     | **从业资格证IC卡**字典     |
-| operation_time           | timestamptz | 操作时间                                        | optional     |                            |
-| driver_name              | text        | 驾驶员姓名                                      | optional     |                            |
-| license_number           | text        | 证件号码                                        | optional     |                            |
-| imel                     | text        | 终端IMEI                                        | optional     | 国际移动设备标识别码       |
-| ic_card_reading_result   | text        | IC卡读取结果                                    | optional     | **IC卡读卡**字典           |
-| occupational_number      | text        | 从业资格证编码                                  | optional     |                            |
-| driver_license_name      | text        | 发证机构名称                                    | optional     |                            |
-| license_expire_date      | timestamptz | 证件有效期                                      | optional     |                            |
-| registration_time        | timestamptz | 登记时间                                        | optional     |                            |
-| created_at               | timestamptz | 创建时间                                        | required     |                            |
-| created_by               | text        | 创建人                                          | required     | **system_user表**的user_id |
-| updated_at               | timestamptz | 修改时间                                        | optional     |                            |
-| updated_by               | text        | 修改人                                          | optional     | **system_user表**的user_id |
-| deleted_at               | timestamptz | 删除时间                                        | optional     |                            |
-| deleted_by               | text        | 删除人                                          | optional     | **system_user表**的user_id |
+| Name                           | Type        | Description                                     | **Required** | default                    |
+| ------------------------------ | ----------- | ----------------------------------------------- | ------------ | -------------------------- |
+| id                             | bigint      | 按指定方法生成                                  | required     | 主键                       |
+| driver_identity_info_report_id | text        | 外部编码，由golang程序生成的xid，暴露到外部使用 | required     | 联合主键                   |
+| vehicle_id                     | text        | **vehicle_info** 车辆信息表 的vehicle_id        | required     |                            |
+| ic_card_status                 | integer     | IC状态(从业资格证IC卡插入,从业资格证IC卡拔出)   | optional     | **从业资格证IC卡**字典     |
+| operation_time                 | timestamptz | 操作时间                                        | optional     |                            |
+| driver_name                    | text        | 驾驶员姓名                                      | optional     |                            |
+| license_number                 | text        | 证件号码                                        | optional     |                            |
+| imel                           | text        | 终端IMEI                                        | optional     | 国际移动设备标识别码       |
+| ic_card_reading_result         | text        | IC卡读取结果                                    | optional     | **IC卡读卡**字典           |
+| occupational_number            | text        | 从业资格证编码                                  | optional     |                            |
+| driver_license_name            | text        | 发证机构名称                                    | optional     |                            |
+| license_expire_date            | timestamptz | 证件有效期                                      | optional     |                            |
+| registration_time              | timestamptz | 登记时间                                        | optional     |                            |
+| created_at                     | timestamptz | 创建时间                                        | required     |                            |
+| created_by                     | text        | 创建人                                          | required     | **system_user表**的user_id |
+| updated_at                     | timestamptz | 修改时间                                        | optional     |                            |
+| updated_by                     | text        | 修改人                                          | optional     | **system_user表**的user_id |
+| deleted_at                     | timestamptz | 删除时间                                        | optional     |                            |
+| deleted_by                     | text        | 删除人                                          | optional     | **system_user表**的user_id |
 
 # 3.人车分离管理
 
@@ -1481,7 +1481,7 @@ create table shard_1.users(
 | deleted_at                    | timestamptz | 删除时间                                        | optional     |                            |
 | deleted_by                    | text        | 删除人                                          | optional     | **system_user表**的user_id |
 
-### 5.7 vioce_alarm_record 语音报警记录
+### 5.7 voice_alarm_record 语音报警记录
 
 | Name                  | Type        | Description                                     | **Required** | default                    |
 | --------------------- | ----------- | ----------------------------------------------- | ------------ | -------------------------- |
