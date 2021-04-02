@@ -3,10 +3,10 @@ db:
   port: 5432
   username: "postgres"
   password: "123456"
-  dbname: "vehicle_supervision"
+  dbname: "workflow"
   sslMode: "disable"
   timezone: "Asia/Shanghai"
-filePath: "../table4.md"
+filePath: "../table3.md"
 #generate:
 #  modules:
 #    -
